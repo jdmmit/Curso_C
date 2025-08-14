@@ -1,32 +1,18 @@
 #include <iostream>
 
-/*
 int main()
 {
-    std::cout << "Hola Mundo!" << std::endl;
-    std::cout << "Hola Mundo!" << "\n";
-    std::cout << "Megusta la Pizza!";
-
+    std::cout << "Hola Mundo! " << std::endl;
+    std::cout << "Hola C++" << "\n";
+    std::cout << "Me Gusta la Pizza";
     return 0;
 }
 
+// Un comentario en una sola linea
+
+/*un
+comentario
+en
+varias
+lineas
 */
-
-// Un comentario de una sola linea
-
-/*
-    un
-    comentario
-    de
-    varias
-    lineas
-*/
-
-int main()
-{
-    int x;
-    x = 5;
-    std::cout << x;
-
-    return 0;
-}
