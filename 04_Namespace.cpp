@@ -3,6 +3,7 @@
 namespace primero
 {
     int x = 1;
+
 } // namespace primero
 
 namespace segundo
@@ -13,8 +14,13 @@ namespace segundo
 int main()
 {
 
+    using namespace primero;
+
     int x = 0;
-    std::cout << "x = " << x;
+
+    std::cout << "x = " << x << "\n";
+    std::cout << "x = " << primero::x << "\n";
+    std::cout << "x = " << segundo::x << "\n";
 
     return 0;
 }
