@@ -30,9 +30,37 @@ Este repositorio contiene todo lo que necesitas para aprender C++ desde cero has
   - `soluciones-ejercicios-1-20.md` - ✅ Soluciones detalladas
   - `testing-rapido.md` - ⚡ Pruebas rápidas
 
-### 🎓 Contenido de Platzi
+### 🎓 Contenido de Platzi - C++ Básico
 - `Platzi_C++/C++_Basic/` - 🎯 Curso básico estructurado
-- `Platzi_C++/C++_POO/` - 🏗️ Programación Orientada a Objetos
+  - `01_Historia_C_y_Cpp.cpp` - 📜 Historia de C y C++
+  - `02_Clase_02.cpp` - 🔧 Proceso de compilación
+  - `03_Instalacion_Windows.cpp` - 🖥️ Instalación en Windows
+  - `04_Instalacion_Linux.cpp` - 🐧 Instalación en Linux
+  - `05_Instalacion_MacOS.cpp` - 🍎 Instalación en macOS
+  - `06_Primer_Programa_Hola_Mundo.cpp` - 👋 Hola Mundo avanzado
+  - `07_Variables_Basicas.cpp` - 📦 Variables básicas
+  - `08_Constantes_y_Listas.cpp` - 🔒 Constantes y arrays
+  - `09_Tipos_de_Datos.cpp` - 📊 Tipos de datos en C++
+  - `10_Operadores_en_Cpp.cpp` - ➕ Operadores avanzados
+
+### 🏗️ Contenido de Platzi - Programación Orientada a Objetos
+- `Platzi_C++/C++_POO/` - 🎯 Programación Orientada a Objetos
+  - `01_Memoria_y_Segmentacion.cpp` - 🎯 Memoria y segmentación
+  - `02_Punteros_Fundamentos.cpp` - 🏗️ Fundamentos de punteros
+  - `03_Punteros_y_Caracteres.cpp` - 📝 Punteros y cadenas
+  - `04_Estructuras_de_Datos.cpp` - 📊 Estructuras básicas
+  - `05_Estructuras_y_Punteros.cpp` - 🔗 Estructuras con punteros
+  - `06_Uniones_y_Enumeraciones.cpp` - 🔄 Uniones y enums
+  - `07_Introduccion_a_POO.cpp` - 🎓 Introducción a POO
+  - `08_Creacion_de_Clases.cpp` - 🏗️ Clases y objetos
+  - `09_Ciclo_de_Vida_de_Objetos.cpp` - 📦 Constructores y destructores
+  - `10_Encapsulacion_en_POO.cpp` - 🔒 Encapsulación
+  - `11_Encadenamiento_de_Metodos.cpp` - 🔗 Métodos encadenados
+  - `12_Miembros_Estaticos.cpp` - 📈 Miembros estáticos
+  - `13_Herencia_Basica.cpp` - 🧬 Herencia básica
+  - `14_Herencia_Multiple_y_Virtual.cpp` - 📚 Herencia múltiple
+  - `15_Polimorfismo_Basico.cpp` - 🎭 Polimorfismo
+  - `16_Resumen_Curso_POO.cpp` - 📋 Resumen del curso
 
 ## 🚀 Cómo Empezar
 
@@ -51,6 +79,8 @@ Este repositorio contiene todo lo que necesitas para aprender C++ desde cero has
 📍 Paso 5: Alias de Tipos (05_Typedef_type_aliases.cpp)
 📍 Paso 6: Operadores (06_Operadores_Aritmeticos.cpp)
 📍 Paso 7: Conversiones (07_Conversion_Typos.cpp)
+📍 Paso 8: Curso Básico Platzi (Platzi_C++/C++_Basic/)
+📍 Paso 9: POO Platzi (Platzi_C++/C++_POO/)
 ```
 
 ### 3. 💻 Compilar y Ejecutar
@@ -70,12 +100,14 @@ g++ -o programa 01_Hola_mundo.cpp
 - 🔍 **Ejemplos prácticos** y casos de uso reales
 - ✅ **Ejercicios progresivos** con soluciones
 - 🎓 **Contenido estructurado** para aprendizaje paso a paso
+- 🗺️ **Índice de navegación** detallado (ver `INDICE_NAVEGACION.md`)
 
 ## 📖 Recursos Adicionales
 
 - 📚 **Guía Completa**: Revisa `Guia/guiacpp.md` para teoría detallada
 - 🧪 **Testing Rápido**: Usa `Guia/testing-rapido.md` para practicar
 - ✅ **Soluciones**: Encuentra respuestas en `Guia/soluciones-ejercicios-1-20.md`
+- 🗺️ **Navegación**: Consulta `INDICE_NAVEGACION.md` para ver el mapa completo
 
 ## 🤝 Contribuir
 

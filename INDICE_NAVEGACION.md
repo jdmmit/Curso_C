@@ -22,16 +22,35 @@
 
 🎓 CURSO PLATZI - BÁSICO
 ├── Platzi_C++/C++_Basic/
-│   ├── 01_Clase_01.cpp ─────────── 📜 Historia de C++
+│   ├── 01_Historia_C_y_Cpp.cpp ─── 📜 Historia de C++
 │   ├── 02_Clase_02.cpp ─────────── 🔧 Proceso de compilación
-│   ├── 03_Clase_03.cpp ─────────── 📦 Variables avanzadas
-│   └── ... (más clases)
+│   ├── 03_Instalacion_Windows.cpp  🖥️ Instalación en Windows
+│   ├── 04_Instalacion_Linux.cpp ── 🐧 Instalación en Linux
+│   ├── 05_Instalacion_MacOS.cpp ── 🍎 Instalación en macOS
+│   ├── 06_Primer_Programa_Hola_Mundo.cpp ─👋 Hola Mundo avanzado
+│   ├── 07_Variables_Basicas.cpp ───📦 Variables básicas
+│   ├── 08_Constantes_y_Listas.cpp ─🔒 Constantes y arrays
+│   ├── 09_Tipos_de_Datos.cpp ──────📊 Tipos de datos en C++
+│   └── 10_Operadores_en_Cpp.cpp ──➕ Operadores avanzados
 
 🏗️ CURSO PLATZI - POO
 └── Platzi_C++/C++_POO/
-    ├── 01_Clase_01.cpp ─────────── 🎯 Introducción a POO
-    ├── 02_Clase_02.cpp ─────────── 🏗️ Clases y objetos
-    └── ... (más clases)
+    ├── 01_Memoria_y_Segmentacion.cpp ─────🎯 Memoria y segmentación
+    ├── 02_Punteros_Fundamentos.cpp ───────🏗️ Fundamentos de punteros
+    ├── 03_Punteros_y_Caracteres.cpp ──────📝 Punteros y cadenas
+    ├── 04_Estructuras_de_Datos.cpp ───────📊 Estructuras básicas
+    ├── 05_Estructuras_y_Punteros.cpp ─────🔗 Estructuras con punteros
+    ├── 06_Uniones_y_Enumeraciones.cpp ────🔄 Uniones y enums
+    ├── 07_Introduccion_a_POO.cpp ─────────🎓 Introducción a POO
+    ├── 08_Creacion_de_Clases.cpp ─────────CppClass y objetos
+    ├── 09_Ciclo_de_Vida_de_Objetos.cpp ───📦 Constructores y destructores
+    ├── 10_Encapsulacion_en_POO.cpp ───────🔒 Encapsulación
+    ├── 11_Encadenamiento_de_Metodos.cpp ──🔗 Métodos encadenados
+    ├── 12_Miembros_Estaticos.cpp ─────────📈 Miembros estáticos
+    ├── 13_Herencia_Basica.cpp ────────────🧬 Herencia básica
+    ├── 14_Herencia_Multiple_y_Virtual.cpp ─📚 Herencia múltiple
+    ├── 15_Polimorfismo_Basico.cpp ────────🎭 Polimorfismo
+    └── 16_Resumen_Curso_POO.cpp ──────────📋 Resumen del curso
 ```
 
 ## 🎯 Rutas de Aprendizaje Recomendadas
@@ -79,11 +98,16 @@
 - [ ] 🔄 Ciclos - Domino for, while, do-while
 - [ ] 📚 Funciones - Puedo crear mis propias funciones
 - [ ] 📦 Arrays - Manejo listas de datos
+- [ ] 🎯 Punteros - Entiendo memoria y direcciones
+- [ ] 📊 Estructuras - Puedo crear tipos personalizados
 
 ### ✅ Programación Orientada a Objetos
 - [ ] 🏗️ Clases - Puedo crear mis propias clases
 - [ ] 🎯 Objetos - Entiendo instancias de clases
 - [ ] 🔒 Encapsulación - Uso private, public, protected
+- [ ] 📦 Constructores - Inicializo objetos correctamente
+- [ ] 🔗 Encadenamiento - Uso métodos encadenados
+- [ ] 📈 Estáticos - Entiendo miembros de clase
 - [ ] 🧬 Herencia - Puedo extender clases
 - [ ] 🎭 Polimorfismo - Entiendo funciones virtuales
 
@@ -100,12 +124,15 @@
 2. **📊 Calculadora de notas** (07_Conversion_Typos.cpp)
 3. **🛒 Sistema de compras** (múltiples archivos)
 4. **📱 Conversor de unidades** (múltiples archivos)
+5. **🔗 Manejo de punteros** (02_Punteros_Fundamentos.cpp)
+6. **📝 Procesador de textos simple** (03_Punteros_y_Caracteres.cpp)
 
 ### 🚀 Nivel 3: Avanzado
 1. **🏦 Sistema bancario** (POO)
 2. **🎮 Juego de texto** (POO)
 3. **📚 Biblioteca digital** (POO)
 4. **🚗 Simulador de vehículos** (POO)
+5. **🏥 Sistema hospitalario** (Herencia y Polimorfismo)
 
 ## 🛠️ Herramientas y Configuración
 
