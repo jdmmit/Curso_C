@@ -1,4 +1,20 @@
+#include <iostream>
 
+using namespace std;
+
+int main()
+{
+    int limite;                      // Variable para almacenar el límite
+    cout << "Introduce el límite: "; // Solicita al usuario que introduzca el límite
+    cin >> limite;                   // Lee el límite introducido por el usuario
+
+    for (int i = 0; i < limite; i++) // Ciclo que imprime los números del 0 al límite
+    {
+        cout << i << endl; // Imprime el valor actual de i
+    }
+
+    return 0;
+}
 
 /*
 Resumen
