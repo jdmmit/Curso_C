@@ -39,47 +39,54 @@ for (inicialización; condición; incremento) {
 #include <iostream>
 using namespace std;
 
-int main() {
+int main()
+{
     cout << "🎯 CICLO FOR EN C++" << endl;
-    cout << "==================" << endl << endl;
-    
+    cout << "==================" << endl
+         << endl;
+
     // 🔢 Ciclo for básico: contar del 0 al 9
     cout << "🔢 Contar del 0 al 9:" << endl;
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < 1000000; i++)
+    {
         cout << "   Iteración " << i << endl;
     }
-    
+
     // 🔁 Ciclo for con decremento
     cout << "\n🔁 Contar del 10 al 1:" << endl;
-    for (int i = 10; i > 0; i--) {
+    for (int i = 10000000; i > 0; i--)
+    {
         cout << "   Cuenta regresiva: " << i << endl;
     }
-    
+
     // 🎯 Ciclo for con límite variable
     cout << "\n🎯 Ciclo con límite variable:" << endl;
     int limite;
     cout << "Ingrese el límite de conteo: ";
     cin >> limite;
-    
+
     cout << "Contando del 0 al " << limite << ":" << endl;
-    for (int i = 0; i <= limite; i++) {
+    for (int i = 0; i <= limite; i++)
+    {
         cout << i << " ";
     }
     cout << endl;
-    
+
     // 📊 Ejemplo práctico: tabla de multiplicar
     cout << "\n📊 Tabla de multiplicar del 5:" << endl;
-    for (int i = 1; i <= 10; i++) {
+    for (int i = 1; i <= 1000000; i++)
+    {
         cout << "   5 x " << i << " = " << (5 * i) << endl;
     }
-    
+
     // 🔄 Ciclo for con incremento personalizado
     cout << "\n🔄 Números pares del 0 al 20:" << endl;
-    for (int i = 0; i <= 20; i += 2) {
+    for (int i = 0; i <= 20; i += 2)
+    {
         cout << i << " ";
     }
     cout << endl;
-    
+
     return 0;
 }
 
@@ -117,25 +124,30 @@ Iteración | i inicial | Condición | Ejecutar | i final
 🔌 EJEMPLO COMPLETO: PATRONES CON ASTERISCOS
 */
 
-void ejemplo_patrones() {
+void ejemplo_patrones()
+{
     cout << "\n🔌 EJEMPLO: PATRONES CON ASTERISCOS" << endl;
     cout << "=================================" << endl;
-    
+
     int filas = 5;
-    
+
     // 🟨 Triángulo rectángulo
     cout << "🟨 Triángulo rectángulo:" << endl;
-    for (int i = 1; i <= filas; i++) {
-        for (int j = 1; j <= i; j++) {
+    for (int i = 1; i <= filas; i++)
+    {
+        for (int j = 1; j <= i; j++)
+        {
             cout << "* ";
         }
         cout << endl;
     }
-    
+
     // 🔷 Triángulo invertido
     cout << "\n🔷 Triángulo invertido:" << endl;
-    for (int i = filas; i >= 1; i--) {
-        for (int j = 1; j <= i; j++) {
+    for (int i = filas; i >= 1; i--)
+    {
+        for (int j = 1; j <= i; j++)
+        {
             cout << "* ";
         }
         cout << endl;
@@ -186,32 +198,37 @@ for (int i = 0; i < 5; i++) {  // ✅ i < tamaño del array
 🔧 EJEMPLO AVANZADO: ESTADÍSTICAS DE NÚMEROS
 */
 
-void ejemplo_estadisticas() {
+void ejemplo_estadisticas()
+{
     cout << "\n🔧 EJEMPLO: ESTADÍSTICAS DE NÚMEROS" << endl;
     cout << "=================================" << endl;
-    
+
     int cantidad, numero, suma = 0, maximo, minimo;
-    
+
     cout << "¿Cuántos números desea ingresar? ";
     cin >> cantidad;
-    
-    if (cantidad > 0) {
+
+    if (cantidad > 0)
+    {
         cout << "Ingrese el primer número: ";
         cin >> numero;
         maximo = minimo = numero;
         suma = numero;
-        
+
         // 🔄 Ingresar números restantes
-        for (int i = 1; i < cantidad; i++) {
+        for (int i = 1; i < cantidad; i++)
+        {
             cout << "Ingrese el número " << (i + 1) << ": ";
             cin >> numero;
             suma += numero;
-            
+
             // 📊 Actualizar máximo y mínimo
-            if (numero > maximo) maximo = numero;
-            if (numero < minimo) minimo = numero;
+            if (numero > maximo)
+                maximo = numero;
+            if (numero < minimo)
+                minimo = numero;
         }
-        
+
         // 📈 Mostrar resultados
         cout << "\n📊 Resultados:" << endl;
         cout << "   Suma: " << suma << endl;
