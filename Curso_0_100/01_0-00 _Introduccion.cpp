@@ -2,7 +2,7 @@
 🎯 ARCHIVO: 01_Hola_mundo.cpp
 📚 TEMA: Tu primer programa en C++
 🎓 NIVEL: Principiante
-📝 DESCRIPCIÓN: Este es tu primer contacto con C++. Aprenderás la estructura básica 
+📝 DESCRIPCIÓN: Este es tu primer contacto con C++. Aprenderás la estructura básica
                de un programa y cómo mostrar texto en pantalla.
 
 💡 CONCEPTOS QUE APRENDERÁS:
@@ -14,20 +14,20 @@
    - Comentarios de una línea y múltiples líneas
 */
 
-#include <iostream>  // 📚 Incluimos la biblioteca para entrada/salida
+#include <iostream> // 📚 Incluimos la biblioteca para entrada/salida
 
-int main()  // 🚀 Función principal - aquí empieza tu programa
+int main() // 🚀 Función principal - aquí empieza tu programa
 {
-    // 🎉 ¡Tu primer mensaje al mundo!
-    std::cout << "Hola Mundo! " << std::endl;
-    
-    // 💻 Saludando específicamente a C++
-    std::cout << "Hola C++" << "\n";
-    
-    // 🍕 Un mensaje personal (¡puedes cambiarlo por lo que te guste!)
-    std::cout << "Me Gusta la Pizza";
-    
-    return 0;  // ✅ Le decimos al sistema que todo salió bien
+  // 🎉 ¡Tu primer mensaje al mundo!
+  std::cout << "Hola Mundo! " << std::endl;
+
+  // 💻 Saludando específicamente a C++
+  std::cout << "Hola C++" << "\n";
+
+  // 🍕 Un mensaje personal (¡puedes cambiarlo por lo que te guste!)
+  std::cout << "Me Gusta la Pizza";
+
+  return 0; // ✅ Le decimos al sistema que todo salió bien
 }
 
 // 📝 TIPOS DE COMENTARIOS EN C++:
@@ -57,7 +57,7 @@ o para documentar tu código
 - Siempre incluye return 0; al final de main()
 - Los comentarios son tu mejor amigo para recordar qué hace tu código
 
-🚀 SIGUIENTE PASO: 
+🚀 SIGUIENTE PASO:
 Una vez que entiendas este programa, ve a 02_Variables.cpp
 para aprender sobre almacenar datos en tu programa.
 */
