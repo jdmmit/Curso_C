@@ -1,245 +1,166 @@
 /*
-🎯 ARCHIVO: 07_Conversion_Typos.cpp
-📚 TEMA: Conversión de Tipos (Type Casting) en C++
+  Tema: Typedef y type aliases
+  Marca de tiempo: 49:19
+  Archivo generado: 2025-09-06
+*/
+/*
+🎯 ARCHIVO: 05_Typedef_type_aliases.cpp
+📚 TEMA: Typedef y Type Aliases (Alias de Tipos) en C++
 🎓 NIVEL: Principiante-Intermedio
-📝 DESCRIPCIÓN: Aprende a convertir entre diferentes tipos de datos de forma segura
+📝 DESCRIPCIÓN: Aprende a crear nombres personalizados para tipos de datos
 
 💡 CONCEPTOS QUE APRENDERÁS:
-   - Conversión implícita vs explícita
-   - static_cast, dynamic_cast, const_cast, reinterpret_cast
-   - Cuándo y cómo usar cada tipo de conversión
-   - Problemas comunes y cómo evitarlos
-   - Ejemplos prácticos del mundo real
+   - Qué son los alias de tipos y para qué sirven
+   - Diferencia entre typedef y using
+   - Cómo hacer el código más legible
+   - Ejemplos prácticos con tipos complejos
+   - Cuándo usar alias de tipos
 */
 
 #include <iostream> // 📚 Para entrada/salida
+#include <vector>   // 📦 Para usar vectores (listas dinámicas)
 #include <string>   // 📝 Para strings
-#include <sstream>  // 🔄 Para conversiones string-número
+
+// 🏷️ CREANDO ALIAS DE TIPOS CON 'using' (Método moderno - C++11+)
+
+// 📝 Alias simples para tipos básicos
+using texto_t = std::string; // 📝 "texto_t" es ahora sinónimo de std::string
+using numero_t = int;        // 🔢 "numero_t" es ahora sinónimo de int
+using decimal_t = double;    // 🔢 "decimal_t" es ahora sinónimo de double
+using caracter_t = char;     // 🔤 "caracter_t" es ahora sinónimo de char
+
+// 📦 Alias para tipos más complejos
+using lista_numeros_t = std::vector<int>;        // 📋 Lista de números enteros
+using lista_textos_t = std::vector<std::string>; // 📋 Lista de textos
+using lista_decimales_t = std::vector<double>;   // 📋 Lista de números decimales
+
+// 🎯 Alias para tipos muy complejos (esto se vuelve muy útil!)
+using lista_estudiantes_t = std::vector<std::pair<std::string, int>>; // 👥 Lista de [nombre, edad]
+
+// 🏷️ MÉTODO ANTIGUO: typedef (aún funciona, pero 'using' es más claro)
+typedef std::string texto_viejo_t; // 📝 Método antiguo
+typedef int numero_viejo_t;        // 🔢 Método antiguo
 
 int main()
 {
-  std::cout << "=== 🔄 CONVERSIÓN DE TIPOS EN C++ ===" << std::endl;
+   std::cout << "=== 🏷️ USANDO ALIAS DE TIPOS ===" << std::endl;
 
-  // 🔄 CONVERSIÓN IMPLÍCITA (Automática)
-  // C++ convierte automáticamente cuando es "seguro"
+   // 📝 Usando nuestros alias simples
+   texto_t nombre = "Ana García"; // En lugar de std::string nombre
+   numero_t edad = 25;            // En lugar de int edad
+   decimal_t altura = 1.68;       // En lugar de double altura
+   caracter_t inicial = 'A';      // En lugar de char inicial
 
-  std::cout << "=== 🤖 CONVERSIÓN IMPLÍCITA (Automática) ===" << std::endl;
+   std::cout << "👤 Información personal:" << std::endl;
+   std::cout << "   Nombre: " << nombre << std::endl;
+   std::cout << "   Edad: " << edad << " años" << std::endl;
+   std::cout << "   Altura: " << altura << " metros" << std::endl;
+   std::cout << "   Inicial: " << inicial << std::endl;
+   std::cout << std::endl;
 
-  int entero = 42;
-  double decimal = entero; // ✅ int → double (seguro, no se pierde información)
+   // 📋 Usando alias para listas (vectores)
+   lista_numeros_t calificaciones = {85, 92, 78, 96, 88}; // 📊 Lista de calificaciones
+   lista_textos_t materias = {"Matemáticas", "Historia", "Ciencias", "Arte", "Deportes"};
 
-  std::cout << "🔢 Entero original: " << entero << std::endl;
-  std::cout << "🔢 Convertido a double: " << decimal << std::endl;
+   std::cout << "📚 Calificaciones por materia:" << std::endl;
+   for (size_t i = 0; i < materias.size(); i++)
+   {
+      std::cout << "   " << materias[i] << ": " << calificaciones[i] << " puntos" << std::endl;
+   }
+   std::cout << std::endl;
 
-  // ⚠️ Conversión que puede perder información
-  double pi = 3.14159;
-  int pi_entero = pi; // ⚠️ double → int (se pierden los decimales)
+   // 🎯 Ejemplo con tipo complejo: lista de estudiantes
+   lista_estudiantes_t clase = {
+       {"María López", 20},
+       {"Carlos Ruiz", 19},
+       {"Sofia Chen", 21},
+       {"Diego Morales", 18}};
 
-  std::cout << "🥧 Pi original: " << pi << std::endl;
-  std::cout << "🔢 Pi como entero: " << pi_entero << " (se perdieron los decimales)" << std::endl;
-  std::cout << std::endl;
+   std::cout << "👥 Lista de estudiantes en la clase:" << std::endl;
+   for (const auto &estudiante : clase)
+   {
+      std::cout << "   " << estudiante.first << " - " << estudiante.second << " años" << std::endl;
+   }
+   std::cout << std::endl;
 
-  // 🎯 CONVERSIÓN EXPLÍCITA CON static_cast
-  // La forma más común y segura de convertir tipos
+   // 🔄 Comparación: con y sin alias
+   std::cout << "=== 🔄 COMPARACIÓN: CON Y SIN ALIAS ===" << std::endl;
 
-  std::cout << "=== 🎯 CONVERSIÓN EXPLÍCITA (static_cast) ===" << std::endl;
+   // ❌ Sin alias (más difícil de leer)
+   std::vector<std::pair<std::string, int>> lista_compleja_sin_alias = {{"Juan", 25}};
 
-  // Conversión segura de int a double
-  int estudiantes = 25;
-  int grupos = 4;
-  double promedio_por_grupo = static_cast<double>(estudiantes) / grupos;
+   // ✅ Con alias (más fácil de leer)
+   lista_estudiantes_t lista_compleja_con_alias = {{"Juan", 25}};
 
-  std::cout << "👥 Estudiantes: " << estudiantes << std::endl;
-  std::cout << "📚 Grupos: " << grupos << std::endl;
-  std::cout << "📊 Promedio por grupo: " << promedio_por_grupo << std::endl;
+   std::cout << "✅ Los alias hacen el código más legible!" << std::endl;
 
-  // Sin static_cast sería división entera
-  int division_entera = estudiantes / grupos;
-  std::cout << "⚠️ Sin conversión (división entera): " << division_entera << std::endl;
-  std::cout << std::endl;
+   // 🎨 Ejemplo práctico: sistema de coordenadas
+   using coordenada_t = std::pair<double, double>; // 📍 Par de (x, y)
+   using ruta_t = std::vector<coordenada_t>;       // 🗺️ Lista de coordenadas
 
-  // 🔤 CONVERSIÓN ENTRE CHAR Y INT
-  std::cout << "=== 🔤 CONVERSIÓN CHAR ↔ INT ===" << std::endl;
+   ruta_t mi_ruta = {
+       {0.0, 0.0}, // 🏠 Casa
+       {2.5, 1.8}, // 🏪 Tienda
+       {5.2, 3.1}, // 🏫 Escuela
+       {0.0, 0.0}  // 🏠 De vuelta a casa
+   };
 
-  char letra = 'A';
-  int codigo_ascii = static_cast<int>(letra);
+   std::cout << std::endl
+             << "🗺️ Mi ruta diaria:" << std::endl;
+   std::string lugares[] = {"Casa", "Tienda", "Escuela", "Casa"};
+   for (size_t i = 0; i < mi_ruta.size(); i++)
+   {
+      std::cout << "   " << lugares[i] << ": ("
+                << mi_ruta[i].first << ", " << mi_ruta[i].second << ")" << std::endl;
+   }
 
-  std::cout << "🔤 Letra: " << letra << std::endl;
-  std::cout << "🔢 Código ASCII: " << codigo_ascii << std::endl;
-
-  // Conversión inversa
-  int codigo = 66;
-  char letra_desde_codigo = static_cast<char>(codigo);
-
-  std::cout << "🔢 Código: " << codigo << std::endl;
-  std::cout << "🔤 Letra correspondiente: " << letra_desde_codigo << std::endl;
-  std::cout << std::endl;
-
-  // 📝 CONVERSIÓN STRING ↔ NÚMEROS
-  std::cout << "=== 📝 CONVERSIÓN STRING ↔ NÚMEROS ===" << std::endl;
-
-  // String a número
-  std::string texto_numero = "123";
-  std::string texto_decimal = "45.67";
-
-  int numero_desde_string = std::stoi(texto_numero);      // string to int
-  double decimal_desde_string = std::stod(texto_decimal); // string to double
-
-  std::cout << "📝 Texto: \"" << texto_numero << "\" → Número: " << numero_desde_string << std::endl;
-  std::cout << "📝 Texto: \"" << texto_decimal << "\" → Decimal: " << decimal_desde_string << std::endl;
-
-  // Número a string
-  int edad = 25;
-  double precio = 19.99;
-
-  std::string edad_texto = std::to_string(edad);
-  std::string precio_texto = std::to_string(precio);
-
-  std::cout << "🔢 Número: " << edad << " → Texto: \"" << edad_texto << "\"" << std::endl;
-  std::cout << "🔢 Decimal: " << precio << " → Texto: \"" << precio_texto << "\"" << std::endl;
-  std::cout << std::endl;
-
-  // 🎯 EJEMPLO PRÁCTICO: Calculadora con entrada de texto
-  std::cout << "=== 🧮 EJEMPLO PRÁCTICO: CALCULADORA ===" << std::endl;
-
-  // Simulamos entrada del usuario (normalmente sería std::cin)
-  std::string entrada1 = "15.5";
-  std::string entrada2 = "4.2";
-
-  try
-  {
-    double num1 = std::stod(entrada1);
-    double num2 = std::stod(entrada2);
-
-    std::cout << "📝 Entrada 1: \"" << entrada1 << "\" → " << num1 << std::endl;
-    std::cout << "📝 Entrada 2: \"" << entrada2 << "\" → " << num2 << std::endl;
-    std::cout << "🧮 Resultados:" << std::endl;
-    std::cout << "   ➕ Suma: " << (num1 + num2) << std::endl;
-    std::cout << "   ➖ Resta: " << (num1 - num2) << std::endl;
-    std::cout << "   ✖️ Multiplicación: " << (num1 * num2) << std::endl;
-    std::cout << "   ➗ División: " << (num1 / num2) << std::endl;
-  }
-  catch (const std::exception &e)
-  {
-    std::cout << "❌ Error en la conversión: " << e.what() << std::endl;
-  }
-  std::cout << std::endl;
-
-  // ⚠️ CONVERSIONES PELIGROSAS Y CÓMO EVITARLAS
-  std::cout << "=== ⚠️ CUIDADO CON ESTAS CONVERSIONES ===" << std::endl;
-
-  // Overflow: número muy grande para el tipo
-  int numero_grande = 2000000000;
-  short numero_pequeño = static_cast<short>(numero_grande); // ⚠️ Puede causar overflow
-
-  std::cout << "🔢 Número grande: " << numero_grande << std::endl;
-  std::cout << "⚠️ Convertido a short: " << numero_pequeño << " (¡overflow!)" << std::endl;
-
-  // Conversión de negativo a unsigned
-  int negativo = -5;
-  unsigned int sin_signo = static_cast<unsigned int>(negativo); // ⚠️ Resultado inesperado
-
-  std::cout << "➖ Número negativo: " << negativo << std::endl;
-  std::cout << "⚠️ Como unsigned: " << sin_signo << " (¡número muy grande!)" << std::endl;
-  std::cout << std::endl;
-
-  // 🎨 EJEMPLO PRÁCTICO: Sistema de calificaciones
-  std::cout << "=== 🎓 SISTEMA DE CALIFICACIONES ===" << std::endl;
-
-  // Convertir calificaciones numéricas a letras
-  double calificaciones[] = {95.5, 87.2, 76.8, 65.1, 54.3};
-  int num_calificaciones = sizeof(calificaciones) / sizeof(calificaciones[0]);
-
-  for (int i = 0; i < num_calificaciones; i++)
-  {
-    double nota = calificaciones[i];
-    char letra;
-
-    // Conversión de número a letra usando lógica
-    if (nota >= 90)
-      letra = 'A';
-    else if (nota >= 80)
-      letra = 'B';
-    else if (nota >= 70)
-      letra = 'C';
-    else if (nota >= 60)
-      letra = 'D';
-    else
-      letra = 'F';
-
-    // Convertir a entero para mostrar sin decimales si es número redondo
-    int nota_entera = static_cast<int>(nota);
-    bool es_entero = (nota == nota_entera);
-
-    std::cout << "📊 Calificación " << (i + 1) << ": ";
-    if (es_entero)
-    {
-      std::cout << nota_entera;
-    }
-    else
-    {
-      std::cout << nota;
-    }
-    std::cout << " → " << letra << std::endl;
-  }
-
-  return 0; // ✅ Programa terminado exitosamente
+   return 0; // ✅ Programa terminado exitosamente
 }
 
 /*
 🎯 EJERCICIOS PARA PRACTICAR:
 
-1. 🌡️ Conversor de temperatura:
-   - Convierte Celsius a Fahrenheit y viceversa
-   - Maneja entrada como string y convierte a double
-   - Muestra resultado redondeado a entero si es apropiado
+1. 🏪 Crea alias para un sistema de inventario:
+   - producto_t para std::pair<std::string, double> (nombre, precio)
+   - inventario_t para std::vector<producto_t>
+   - Crea una lista de productos con precios
 
-2. 💰 Conversor de monedas:
-   - Entrada: cantidad como string
-   - Conversión: aplica tasa de cambio
-   - Salida: resultado formateado como string
+2. 🎮 Crea alias para un videojuego:
+   - posicion_t para coordenadas (x, y)
+   - jugador_t para información del jugador
+   - enemigos_t para lista de enemigos
 
-3. 🎮 Sistema de puntuación:
-   - Convierte puntos (double) a nivel (int)
-   - Convierte nivel a rango (char: S, A, B, C, D)
-   - Maneja casos especiales y errores
+3. 📊 Crea alias para estadísticas:
+   - puntuacion_t para números decimales
+   - estadisticas_t para lista de puntuaciones
+   - Calcula promedio, máximo y mínimo
 
-4. 📱 Validador de entrada:
-   - Lee string del usuario
-   - Intenta convertir a número
-   - Maneja errores con try-catch
+💡 ¿CUÁNDO USAR ALIAS DE TIPOS?
 
-💡 TIPOS DE CONVERSIÓN EN C++:
+✅ USA ALIAS CUANDO:
+- Los tipos son muy largos o complejos
+- Quieres hacer el código más legible
+- Planeas cambiar el tipo en el futuro
+- Trabajas con tipos que se repiten mucho
 
-🎯 static_cast<tipo>(valor):
-- Conversiones "normales" y seguras
-- Verificación en tiempo de compilación
-- Más usado para tipos básicos
+❌ NO uses alias cuando:
+- El tipo es simple y claro (int, double, etc.)
+- Solo lo usas una vez
+- Hace el código más confuso
 
-🔄 dynamic_cast<tipo>(valor):
-- Para jerarquías de clases (herencia)
-- Verificación en tiempo de ejecución
-- Devuelve nullptr si falla
+🆚 typedef vs using:
 
-🔒 const_cast<tipo>(valor):
-- Quita o agrega const/volatile
-- Úsalo con mucho cuidado
-- Puede causar comportamiento indefinido
+📜 typedef (método antiguo):
+typedef std::vector<int> lista_t;
 
-⚡ reinterpret_cast<tipo>(valor):
-- Conversión de bajo nivel
-- Muy peligroso, evítalo si es posible
-- Para casos muy específicos
+🆕 using (método moderno - recomendado):
+using lista_t = std::vector<int>;
 
-⚠️ REGLAS DE ORO:
-
-1. ✅ Prefiere static_cast para conversiones básicas
-2. ⚠️ Siempre verifica rangos antes de convertir
-3. 🛡️ Usa try-catch para conversiones string-número
-4. 📝 Documenta conversiones que puedan perder información
-5. 🧪 Prueba casos extremos (números muy grandes/pequeños)
+💡 VENTAJAS DE 'using':
+- Más fácil de leer (tipo = definición)
+- Mejor soporte para templates
+- Sintaxis más consistente
 
 🚀 SIGUIENTE PASO:
-¡Felicidades! Has completado los conceptos básicos de C++.
-Ahora puedes explorar los archivos de Platzi para conceptos más avanzados.
+Ve a 06_Operadores_Aritmeticos.cpp para aprender sobre operaciones matemáticas.
 */

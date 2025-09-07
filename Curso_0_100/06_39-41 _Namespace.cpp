@@ -1,204 +1,161 @@
 /*
-🎯 ARCHIVO: 06_Operadores_Aritmeticos.cpp
-📚 TEMA: Operadores Aritméticos en C++
-🎓 NIVEL: Principiante
-📝 DESCRIPCIÓN: Aprende a realizar operaciones matemáticas en C++
+  Tema: Namespace
+  Marca de tiempo: 39:41
+  Archivo generado: 2025-09-06
+*/
+/*
+🎯 ARCHIVO: 04_Namespace.cpp
+📚 TEMA: Namespaces (Espacios de Nombres) en C++
+🎓 NIVEL: Principiante-Intermedio
+📝 DESCRIPCIÓN: Aprende a organizar tu código y evitar conflictos de nombres
 
 💡 CONCEPTOS QUE APRENDERÁS:
-   - Operadores básicos: +, -, *, /, %
-   - Operadores de asignación: +=, -=, *=, /=, %=
-   - Operadores de incremento/decremento: ++, --
-   - Precedencia de operadores
-   - Ejemplos prácticos con diferentes escenarios
+   - Qué son los namespaces y para qué sirven
+   - Cómo crear tus propios namespaces
+   - Cómo usar variables de diferentes namespaces
+   - La diferencia entre std::cout y cout
+   - Cuándo usar "using namespace"
 */
 
-#include <iostream> // 📚 Para entrada/salida
-#include <cmath>    // 🧮 Para funciones matemáticas avanzadas
+#include <iostream> // 📚 Biblioteca estándar de C++
+
+// 🏠 CREANDO NUESTROS PROPIOS NAMESPACES
+// Un namespace es como una "casa" donde viven las variables y funciones
+
+namespace primero // 🏠 Primera "casa" o espacio de nombres
+{
+   int x = 1;             // 📦 Variable x en el namespace "primero"
+   double precio = 10.50; // 💰 Variable precio en "primero"
+
+   void saludar()
+   { // 👋 Función en el namespace "primero"
+      std::cout << "¡Hola desde el namespace primero!" << std::endl;
+   }
+} // namespace primero
+
+namespace segundo // 🏠 Segunda "casa" o espacio de nombres
+{
+   int x = 2;             // 📦 Otra variable x (¡mismo nombre, diferente lugar!)
+   double precio = 25.75; // 💰 Otra variable precio
+
+   void saludar()
+   { // 👋 Otra función saludar
+      std::cout << "¡Hola desde el namespace segundo!" << std::endl;
+   }
+} // namespace segundo
+
+// 🏢 También podemos crear namespaces para diferentes módulos
+namespace matematicas
+{
+   const double PI = 3.14159;
+
+   double calcularArea(double radio)
+   {
+      return PI * radio * radio;
+   }
+}
+
+namespace fisica
+{
+   const double VELOCIDAD_LUZ = 299792458; // m/s
+
+   double calcularEnergia(double masa)
+   {
+      return masa * VELOCIDAD_LUZ * VELOCIDAD_LUZ; // E = mc²
+   }
+}
 
 int main()
 {
-  std::cout << "=== 🧮 OPERADORES ARITMÉTICOS BÁSICOS ===" << std::endl;
+   // 🎯 USANDO NAMESPACES
 
-  // 🔢 Variables para nuestros ejemplos
-  int a = 10;
-  int b = 3;
-  double x = 15.5;
-  double y = 4.2;
+   // 📍 Método 1: Especificar el namespace completo
+   std::cout << "=== 📍 ACCESO DIRECTO A NAMESPACES ===" << std::endl;
+   std::cout << "primero::x = " << primero::x << std::endl;
+   std::cout << "segundo::x = " << segundo::x << std::endl;
+   std::cout << "primero::precio = $" << primero::precio << std::endl;
+   std::cout << "segundo::precio = $" << segundo::precio << std::endl;
+   std::cout << std::endl;
 
-  // ➕ SUMA
-  int suma_enteros = a + b;
-  double suma_decimales = x + y;
+   // 👋 Llamando funciones de diferentes namespaces
+   primero::saludar();
+   segundo::saludar();
+   std::cout << std::endl;
 
-  std::cout << "➕ SUMA:" << std::endl;
-  std::cout << "   " << a << " + " << b << " = " << suma_enteros << std::endl;
-  std::cout << "   " << x << " + " << y << " = " << suma_decimales << std::endl;
-  std::cout << std::endl;
+   // 📍 Método 2: Usar "using namespace" para un namespace específico
+   {                           // 🔒 Creamos un bloque para limitar el alcance
+      using namespace primero; // 🏠 Ahora "vivimos" en el namespace primero
 
-  // ➖ RESTA
-  int resta_enteros = a - b;
-  double resta_decimales = x - y;
+      std::cout << "=== 🏠 USANDO 'using namespace primero' ===" << std::endl;
+      std::cout << "x = " << x << " (viene de primero)" << std::endl;
+      std::cout << "precio = $" << precio << " (viene de primero)" << std::endl;
 
-  std::cout << "➖ RESTA:" << std::endl;
-  std::cout << "   " << a << " - " << b << " = " << resta_enteros << std::endl;
-  std::cout << "   " << x << " - " << y << " = " << resta_decimales << std::endl;
-  std::cout << std::endl;
+      // ⚠️ Si queremos acceder al segundo, necesitamos especificarlo
+      std::cout << "segundo::x = " << segundo::x << std::endl;
+   }
+   std::cout << std::endl;
 
-  // ✖️ MULTIPLICACIÓN
-  int multiplicacion_enteros = a * b;
-  double multiplicacion_decimales = x * y;
+   // 📦 Variable local (en main)
+   int x = 0; // 🏠 Esta x vive en la función main
 
-  std::cout << "✖️ MULTIPLICACIÓN:" << std::endl;
-  std::cout << "   " << a << " * " << b << " = " << multiplicacion_enteros << std::endl;
-  std::cout << "   " << x << " * " << y << " = " << multiplicacion_decimales << std::endl;
-  std::cout << std::endl;
+   std::cout << "=== 🏠 VARIABLES LOCALES VS NAMESPACES ===" << std::endl;
+   std::cout << "x local = " << x << std::endl;             // Variable de main
+   std::cout << "primero::x = " << primero::x << std::endl; // Variable de primero
+   std::cout << "segundo::x = " << segundo::x << std::endl; // Variable de segundo
+   std::cout << std::endl;
 
-  // ➗ DIVISIÓN
-  double division_enteros = static_cast<double>(a) / b; // 🔄 Conversión para obtener decimales
-  double division_decimales = x / y;
-  int division_entera = a / b; // ⚠️ División entera (sin decimales)
+   // 🧮 Usando namespaces especializados
+   std::cout << "=== 🧮 NAMESPACES ESPECIALIZADOS ===" << std::endl;
+   double radio = 5.0;
+   double masa = 10.0;
 
-  std::cout << "➗ DIVISIÓN:" << std::endl;
-  std::cout << "   " << a << " / " << b << " = " << division_enteros << " (con decimales)" << std::endl;
-  std::cout << "   " << a << " / " << b << " = " << division_entera << " (división entera)" << std::endl;
-  std::cout << "   " << x << " / " << y << " = " << division_decimales << std::endl;
-  std::cout << std::endl;
+   std::cout << "Área del círculo (radio=" << radio << "): "
+             << matematicas::calcularArea(radio) << std::endl;
+   std::cout << "Energía (masa=" << masa << "kg): "
+             << fisica::calcularEnergia(masa) << " J" << std::endl;
 
-  // 🔢 MÓDULO (Residuo de la división)
-  int modulo = a % b; // ⚠️ Solo funciona con enteros
-
-  std::cout << "🔢 MÓDULO (Residuo):" << std::endl;
-  std::cout << "   " << a << " % " << b << " = " << modulo << std::endl;
-  std::cout << "   (El residuo de dividir " << a << " entre " << b << ")" << std::endl;
-  std::cout << std::endl;
-
-  // 🎯 EJEMPLO PRÁCTICO: Sistema de estudiantes
-  std::cout << "=== 🎓 EJEMPLO PRÁCTICO: GESTIÓN DE ESTUDIANTES ===" << std::endl;
-
-  int estudiantes = 20; // 👥 Número inicial de estudiantes
-  std::cout << "👥 Estudiantes iniciales: " << estudiantes << std::endl;
-
-  // ➕ Llegan nuevos estudiantes
-  estudiantes += 5; // Equivale a: estudiantes = estudiantes + 5
-  std::cout << "➕ Después de inscribir 5 más: " << estudiantes << std::endl;
-
-  // ➖ Algunos estudiantes se dan de baja
-  estudiantes -= 2; // Equivale a: estudiantes = estudiantes - 2
-  std::cout << "➖ Después de 2 bajas: " << estudiantes << std::endl;
-
-  // ✖️ Se duplica el número (nueva sede)
-  estudiantes *= 2; // Equivale a: estudiantes = estudiantes * 2
-  std::cout << "✖️ Después de abrir nueva sede (duplicar): " << estudiantes << std::endl;
-
-  // ➗ Se dividen en grupos
-  double grupos = static_cast<double>(estudiantes) / 4;
-  std::cout << "➗ Divididos en grupos de 4: " << grupos << " grupos" << std::endl;
-
-  // 🔢 ¿Cuántos estudiantes sobran?
-  int sobrantes = estudiantes % 4;
-  std::cout << "🔢 Estudiantes que sobran: " << sobrantes << std::endl;
-  std::cout << std::endl;
-
-  // 🔄 OPERADORES DE INCREMENTO Y DECREMENTO
-  std::cout << "=== 🔄 INCREMENTO Y DECREMENTO ===" << std::endl;
-
-  int contador = 5;
-  std::cout << "🔢 Contador inicial: " << contador << std::endl;
-
-  // Pre-incremento (++variable)
-  std::cout << "Pre-incremento (++contador): " << ++contador << std::endl; // Incrementa y luego muestra
-
-  // Post-incremento (variable++)
-  std::cout << "Post-incremento (contador++): " << contador++ << std::endl; // Muestra y luego incrementa
-  std::cout << "Valor después del post-incremento: " << contador << std::endl;
-
-  // Pre-decremento (--variable)
-  std::cout << "Pre-decremento (--contador): " << --contador << std::endl;
-
-  // Post-decremento (variable--)
-  std::cout << "Post-decremento (contador--): " << contador-- << std::endl;
-  std::cout << "Valor final del contador: " << contador << std::endl;
-  std::cout << std::endl;
-
-  // 🚀 EXPONENCIACIÓN (Potencias)
-  std::cout << "=== 🚀 EXPONENCIACIÓN ===" << std::endl;
-
-  int base = 2;
-  int exponente = 3;
-
-  // Método 1: Usando bucle (método manual)
-  int resultado_manual = 1;
-  for (int i = 0; i < exponente; ++i)
-  {
-    resultado_manual *= base;
-  }
-
-  // Método 2: Usando función pow() de cmath
-  double resultado_pow = std::pow(base, exponente);
-
-  std::cout << "🧮 " << base << " elevado a " << exponente << ":" << std::endl;
-  std::cout << "   Método manual: " << resultado_manual << std::endl;
-  std::cout << "   Usando pow(): " << resultado_pow << std::endl;
-  std::cout << std::endl;
-
-  // 🎯 EJEMPLO PRÁCTICO: Calculadora de interés compuesto
-  std::cout << "=== 💰 CALCULADORA DE INTERÉS COMPUESTO ===" << std::endl;
-
-  double capital_inicial = 1000.0; // 💰 $1000 iniciales
-  double tasa_interes = 0.05;      // 📈 5% anual
-  int años = 3;                    // ⏰ 3 años
-
-  double capital_final = capital_inicial * std::pow(1 + tasa_interes, años);
-  double ganancia = capital_final - capital_inicial;
-
-  std::cout << "💰 Capital inicial: $" << capital_inicial << std::endl;
-  std::cout << "📈 Tasa de interés: " << (tasa_interes * 100) << "% anual" << std::endl;
-  std::cout << "⏰ Tiempo: " << años << " años" << std::endl;
-  std::cout << "💵 Capital final: $" << capital_final << std::endl;
-  std::cout << "🎉 Ganancia total: $" << ganancia << std::endl;
-
-  return 0; // ✅ Programa terminado exitosamente
+   return 0; // ✅ Programa terminado exitosamente
 }
 
 /*
 🎯 EJERCICIOS PARA PRACTICAR:
 
-1. 🛒 Calculadora de compras:
-   - Precio de 3 productos diferentes
-   - Cantidad de cada producto
-   - Calcular subtotal, impuestos (16%) y total
+1. 🏠 Crea dos namespaces llamados "casa" y "trabajo":
+   - Cada uno con una variable "temperatura"
+   - Cada uno con una función "mostrarInfo()"
+   - Muestra ambas temperaturas en main
 
-2. 🏃‍♂️ Calculadora de velocidad:
-   - Distancia recorrida en metros
-   - Tiempo en segundos
-   - Calcular velocidad en m/s y km/h
+2. 🎮 Crea namespaces para un videojuego:
+   - "jugador" con variables vida, puntos
+   - "enemigo" con variables vida, daño
+   - Simula una batalla mostrando las estadísticas
 
-3. 🎂 Calculadora de edad:
-   - Año actual y año de nacimiento
-   - Calcular edad exacta
-   - Determinar cuántos días has vivido (aproximado)
+3. 🏪 Crea namespaces para una tienda:
+   - "productos" con precios de diferentes artículos
+   - "descuentos" con porcentajes de descuento
+   - Calcula precios finales
 
-4. 📐 Calculadora geométrica:
-   - Área y perímetro de un rectángulo
-   - Área y circunferencia de un círculo
-   - Volumen de una esfera
+💡 ¿POR QUÉ USAR NAMESPACES?
 
-💡 PRECEDENCIA DE OPERADORES (orden de ejecución):
+✅ VENTAJAS:
+- Evita conflictos de nombres (dos variables pueden llamarse igual)
+- Organiza el código en grupos lógicos
+- Hace el código más legible y mantenible
+- Permite reutilizar nombres sin problemas
 
-1. 🔢 Paréntesis: ( )
-2. 🚀 Exponenciación: pow()
-3. ✖️➗ Multiplicación y División: *, /, %
-4. ➕➖ Suma y Resta: +, -
+🤔 EJEMPLO DEL MUNDO REAL:
+Imagina que tienes dos amigos llamados "Juan":
+- Juan de la escuela
+- Juan del trabajo
 
-Ejemplo: 2 + 3 * 4 = 2 + 12 = 14 (no 20)
-Para cambiar el orden: (2 + 3) * 4 = 5 * 4 = 20
+Los namespaces son como especificar "Juan de la escuela" vs "Juan del trabajo"
+para que sepas exactamente de cuál estás hablando.
 
-⚠️ CUIDADOS IMPORTANTES:
-
-- División entre enteros da resultado entero: 7/2 = 3 (no 3.5)
-- Para obtener decimales: 7.0/2 o static_cast<double>(7)/2
-- El módulo (%) solo funciona con números enteros
-- Cuidado con la división entre cero (causa error)
+⚠️ CUIDADO CON "using namespace std":
+- std::cout es más claro que solo cout
+- "using namespace std" puede causar conflictos
+- Es mejor ser específico, especialmente en proyectos grandes
 
 🚀 SIGUIENTE PASO:
-Ve a 07_Conversion_Typos.cpp para aprender sobre conversión de tipos.
+Ve a 05_Typedef_type_aliases.cpp para aprender a crear nombres personalizados para tipos.
 */

@@ -1,161 +1,106 @@
 /*
-🎯 ARCHIVO: 05_Typedef_type_aliases.cpp
-📚 TEMA: Typedef y Type Aliases (Alias de Tipos) en C++
-🎓 NIVEL: Principiante-Intermedio
-📝 DESCRIPCIÓN: Aprende a crear nombres personalizados para tipos de datos
+  Tema: const
+  Marca de tiempo: 31:08
+  Archivo generado: 2025-09-06
+*/
+/*
+🎯 ARCHIVO: 03_const.cpp
+📚 TEMA: Constantes en C++
+🎓 NIVEL: Principiante
+📝 DESCRIPCIÓN: Aprende a usar variables que no pueden cambiar su valor (constantes)
 
 💡 CONCEPTOS QUE APRENDERÁS:
-   - Qué son los alias de tipos y para qué sirven
-   - Diferencia entre typedef y using
-   - Cómo hacer el código más legible
-   - Ejemplos prácticos con tipos complejos
-   - Cuándo usar alias de tipos
+   - Qué son las constantes y cuándo usarlas
+   - Diferencia entre variables y constantes
+   - La palabra clave 'const'
+   - Buenas prácticas con constantes
+   - Ejemplo práctico: cálculo de circunferencia
 */
 
 #include <iostream> // 📚 Para entrada/salida
-#include <vector>   // 📦 Para usar vectores (listas dinámicas)
-#include <string>   // 📝 Para strings
-
-// 🏷️ CREANDO ALIAS DE TIPOS CON 'using' (Método moderno - C++11+)
-
-// 📝 Alias simples para tipos básicos
-using texto_t = std::string; // 📝 "texto_t" es ahora sinónimo de std::string
-using numero_t = int;        // 🔢 "numero_t" es ahora sinónimo de int
-using decimal_t = double;    // 🔢 "decimal_t" es ahora sinónimo de double
-using caracter_t = char;     // 🔤 "caracter_t" es ahora sinónimo de char
-
-// 📦 Alias para tipos más complejos
-using lista_numeros_t = std::vector<int>;        // 📋 Lista de números enteros
-using lista_textos_t = std::vector<std::string>; // 📋 Lista de textos
-using lista_decimales_t = std::vector<double>;   // 📋 Lista de números decimales
-
-// 🎯 Alias para tipos muy complejos (esto se vuelve muy útil!)
-using lista_estudiantes_t = std::vector<std::pair<std::string, int>>; // 👥 Lista de [nombre, edad]
-
-// 🏷️ MÉTODO ANTIGUO: typedef (aún funciona, pero 'using' es más claro)
-typedef std::string texto_viejo_t; // 📝 Método antiguo
-typedef int numero_viejo_t;        // 🔢 Método antiguo
 
 int main()
 {
-  std::cout << "=== 🏷️ USANDO ALIAS DE TIPOS ===" << std::endl;
+   // 🔒 CONSTANTES: Variables que NO pueden cambiar
+   // Una vez que les asignas un valor, ese valor es permanente
 
-  // 📝 Usando nuestros alias simples
-  texto_t nombre = "Ana García"; // En lugar de std::string nombre
-  numero_t edad = 25;            // En lugar de int edad
-  decimal_t altura = 1.68;       // En lugar de double altura
-  caracter_t inicial = 'A';      // En lugar de char inicial
+   // 🥧 PI es un valor matemático que nunca cambia
+   const double PI = 3.14159; // 🔒 Esta es una constante
 
-  std::cout << "👤 Información personal:" << std::endl;
-  std::cout << "   Nombre: " << nombre << std::endl;
-  std::cout << "   Edad: " << edad << " años" << std::endl;
-  std::cout << "   Altura: " << altura << " metros" << std::endl;
-  std::cout << "   Inicial: " << inicial << std::endl;
-  std::cout << std::endl;
+   // 📏 Variables normales que SÍ pueden cambiar
+   double radio = 10; // 📐 Radio del círculo en centímetros
 
-  // 📋 Usando alias para listas (vectores)
-  lista_numeros_t calificaciones = {85, 92, 78, 96, 88}; // 📊 Lista de calificaciones
-  lista_textos_t materias = {"Matemáticas", "Historia", "Ciencias", "Arte", "Deportes"};
+   // 🧮 Calculamos la circunferencia usando la fórmula: 2 * π * r
+   double circunferencia = 2 * PI * radio;
 
-  std::cout << "📚 Calificaciones por materia:" << std::endl;
-  for (size_t i = 0; i < materias.size(); i++)
-  {
-    std::cout << "   " << materias[i] << ": " << calificaciones[i] << " puntos" << std::endl;
-  }
-  std::cout << std::endl;
+   // 🖥️ Mostramos el resultado
+   std::cout << "=== 🔵 CÁLCULO DE CIRCUNFERENCIA ===" << std::endl;
+   std::cout << "Radio: " << radio << " cm" << std::endl;
+   std::cout << "PI: " << PI << std::endl;
+   std::cout << "Circunferencia: " << circunferencia << " cm" << std::endl;
+   std::cout << std::endl;
 
-  // 🎯 Ejemplo con tipo complejo: lista de estudiantes
-  lista_estudiantes_t clase = {
-      {"María López", 20},
-      {"Carlos Ruiz", 19},
-      {"Sofia Chen", 21},
-      {"Diego Morales", 18}};
+   // 🔄 Podemos cambiar el radio y recalcular
+   radio = 5;                       // ✅ Esto está permitido (radio no es constante)
+   circunferencia = 2 * PI * radio; // 🔄 Recalculamos
 
-  std::cout << "👥 Lista de estudiantes en la clase:" << std::endl;
-  for (const auto &estudiante : clase)
-  {
-    std::cout << "   " << estudiante.first << " - " << estudiante.second << " años" << std::endl;
-  }
-  std::cout << std::endl;
+   std::cout << "=== 🔵 NUEVO CÁLCULO ===" << std::endl;
+   std::cout << "Nuevo radio: " << radio << " cm" << std::endl;
+   std::cout << "Nueva circunferencia: " << circunferencia << " cm" << std::endl;
+   std::cout << std::endl;
 
-  // 🔄 Comparación: con y sin alias
-  std::cout << "=== 🔄 COMPARACIÓN: CON Y SIN ALIAS ===" << std::endl;
+   // ❌ Si intentáramos hacer esto, daría ERROR:
+   // PI = 3.14;  // ❌ ERROR: no puedes cambiar una constante
 
-  // ❌ Sin alias (más difícil de leer)
-  std::vector<std::pair<std::string, int>> lista_compleja_sin_alias = {{"Juan", 25}};
+   // 🌟 MÁS EJEMPLOS DE CONSTANTES ÚTILES
+   const int DIAS_SEMANA = 7;              // 📅 Los días de la semana nunca cambian
+   const double VELOCIDAD_LUZ = 299792458; // 💡 Velocidad de la luz (m/s)
+   const char GRADO_CELSIUS = 'C';         // 🌡️ Símbolo de grados Celsius
+   const bool ES_MAYOR_EDAD = true;        // ✅ Estado que no cambiará en el programa
 
-  // ✅ Con alias (más fácil de leer)
-  lista_estudiantes_t lista_compleja_con_alias = {{"Juan", 25}};
+   std::cout << "=== 🌟 OTRAS CONSTANTES ÚTILES ===" << std::endl;
+   std::cout << "Días en una semana: " << DIAS_SEMANA << std::endl;
+   std::cout << "Velocidad de la luz: " << VELOCIDAD_LUZ << " m/s" << std::endl;
+   std::cout << "Símbolo de temperatura: " << GRADO_CELSIUS << std::endl;
+   std::cout << "Es mayor de edad: " << ES_MAYOR_EDAD << std::endl;
 
-  std::cout << "✅ Los alias hacen el código más legible!" << std::endl;
-
-  // 🎨 Ejemplo práctico: sistema de coordenadas
-  using coordenada_t = std::pair<double, double>; // 📍 Par de (x, y)
-  using ruta_t = std::vector<coordenada_t>;       // 🗺️ Lista de coordenadas
-
-  ruta_t mi_ruta = {
-      {0.0, 0.0}, // 🏠 Casa
-      {2.5, 1.8}, // 🏪 Tienda
-      {5.2, 3.1}, // 🏫 Escuela
-      {0.0, 0.0}  // 🏠 De vuelta a casa
-  };
-
-  std::cout << std::endl
-            << "🗺️ Mi ruta diaria:" << std::endl;
-  std::string lugares[] = {"Casa", "Tienda", "Escuela", "Casa"};
-  for (size_t i = 0; i < mi_ruta.size(); i++)
-  {
-    std::cout << "   " << lugares[i] << ": ("
-              << mi_ruta[i].first << ", " << mi_ruta[i].second << ")" << std::endl;
-  }
-
-  return 0; // ✅ Programa terminado exitosamente
+   return 0; // ✅ Programa terminado exitosamente
 }
 
 /*
 🎯 EJERCICIOS PARA PRACTICAR:
 
-1. 🏪 Crea alias para un sistema de inventario:
-   - producto_t para std::pair<std::string, double> (nombre, precio)
-   - inventario_t para std::vector<producto_t>
-   - Crea una lista de productos con precios
+1. 🏠 Crea constantes para:
+   - Número de habitaciones en tu casa
+   - Tu año de nacimiento
+   - El número de ruedas de un carro
 
-2. 🎮 Crea alias para un videojuego:
-   - posicion_t para coordenadas (x, y)
-   - jugador_t para información del jugador
-   - enemigos_t para lista de enemigos
+2. 🧮 Usa la constante PI para calcular:
+   - El área de un círculo (π * r²)
+   - El volumen de una esfera (4/3 * π * r³)
 
-3. 📊 Crea alias para estadísticas:
-   - puntuacion_t para números decimales
-   - estadisticas_t para lista de puntuaciones
-   - Calcula promedio, máximo y mínimo
+3. 🛒 Crea un programa que calcule el precio con impuestos:
+   - Constante para el porcentaje de impuesto (ej: 0.16 para 16%)
+   - Variable para el precio base
+   - Calcula el precio final
 
-💡 ¿CUÁNDO USAR ALIAS DE TIPOS?
+💡 CUÁNDO USAR CONSTANTES:
 
-✅ USA ALIAS CUANDO:
-- Los tipos son muy largos o complejos
-- Quieres hacer el código más legible
-- Planeas cambiar el tipo en el futuro
-- Trabajas con tipos que se repiten mucho
+✅ USA const CUANDO:
+- El valor nunca va a cambiar (PI, días de la semana, etc.)
+- Quieres evitar cambios accidentales
+- El valor representa una configuración fija
+- Quieres hacer tu código más legible
 
-❌ NO uses alias cuando:
-- El tipo es simple y claro (int, double, etc.)
-- Solo lo usas una vez
-- Hace el código más confuso
+❌ NO uses const CUANDO:
+- El valor necesita cambiar durante el programa
+- Estás aprendiendo y experimentando con valores
 
-🆚 typedef vs using:
-
-📜 typedef (método antiguo):
-typedef std::vector<int> lista_t;
-
-🆕 using (método moderno - recomendado):
-using lista_t = std::vector<int>;
-
-💡 VENTAJAS DE 'using':
-- Más fácil de leer (tipo = definición)
-- Mejor soporte para templates
-- Sintaxis más consistente
+🎨 CONVENCIONES DE NOMBRES:
+- Constantes suelen escribirse en MAYÚSCULAS: PI, DIAS_SEMANA
+- Usa guiones bajos para separar palabras: VELOCIDAD_LUZ
+- Esto hace que sea fácil identificar constantes en tu código
 
 🚀 SIGUIENTE PASO:
-Ve a 06_Operadores_Aritmeticos.cpp para aprender sobre operaciones matemáticas.
+Ve a 04_Namespace.cpp para aprender a organizar tu código.
 */
