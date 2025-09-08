@@ -90,7 +90,7 @@ void ejercicio06()
     cout << "Ingresa la temperatura en grados celcius:" << endl;
     cin >> c;
 
-    float f = (c * (9 / 5) + 32);
+    float f = (c * (9.0 / 5.0) + 32);
     cout
         << " La temperatura en grados centigrados es: " << c << " La temepratura en grados fahrenheit es: " << f << endl;
 }
