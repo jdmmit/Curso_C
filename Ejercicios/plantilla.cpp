@@ -70,44 +70,48 @@ int main()
 
         switch (opciones)
         {
-        case 1:
-            cout << "Ejercicio 01" << endl;
-            break;
-        case 2:
-            cout << "Ejercicio 02" << endl;
-            break;
-        case 3:
-            cout << "Ejercicio 03" << endl;
-            break;
-        case 4:
-            cout << "Ejercicio 04" << endl;
-            break;
-        case 5:
-            cout << "Ejercicio 05" << endl;
-            break;
-        case 6:
-            cout << "Ejercicio 06" << endl;
-            break;
-        case 7:
-            cout << "Ejercicio 07" << endl;
-            break;
-        case 8:
-            cout << "Ejercicio 08" << endl;
-            break;
-        case 9:
-            cout << "Ejercicio 09" << endl;
-            break;
-        case 10:
-            cout << "Ejercicio 10" << endl;
-            break;
-        case 11:
-            cout << "Salir" << endl;
-            break;
-        default:
-            cout << "Opcion no valida" << endl;
-            break;
+            switch (opciones)
+            {
+            case 1:
+                ejercicio01();
+                break;
+            case 2:
+                ejercicio02();
+                break;
+            case 3:
+                ejercicio03();
+                break;
+            case 4:
+                ejercicio04();
+                break;
+            case 5:
+                ejercicio05();
+                break;
+            case 6:
+                ejercicio06();
+                ;
+                break;
+            case 7:
+                ejercicio07();
+                break;
+            case 8:
+                ejercicio08();
+                break;
+            case 9:
+                ejercicio09();
+                break;
+            case 10:
+                ejercicio10();
+                break;
+            case 11:
+                cout << "Salir" << endl;
+                break;
+            default:
+                cout << "Opcion no valida" << endl;
+                break;
+            }
+            cout << "****************" << endl;
+            cout << endl;
         }
-        cout << "****************" << endl;
-        cout << endl;
     }
 }
